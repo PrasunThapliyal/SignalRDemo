@@ -4,7 +4,7 @@ var connection;
 async function initConnection() {
 	console.log("inside initConnection");
 	connection = new signalR.HubConnectionBuilder()
-		.withUrl("/messages")
+		.withUrl("/signalrdemo/messages")
 		.configureLogging(signalR.LogLevel.Information)
 		.build();
 		
@@ -33,5 +33,5 @@ async function startConnection() {
 async function sendMessage() {
 	var message = document.getElementById("message").value;
 	console.log("sending message: " + message);
-	connection.invoke("SendMessageToAll", message);
+	connection.invoke("signalrdemo/SendMessageToAll", message);
 };
