@@ -367,4 +367,10 @@ Step 6:
 						location /messages {
 						proxy_pass https://localhost:2613;
 ==========================================================
+25 May 2023
+===========
+Branch CICD
+
+Connect this client to the Websocket Service running on cicd
+On browser, go to https://localhost/login. Then click buttons Init and Start
 
