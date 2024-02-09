@@ -374,3 +374,24 @@ Branch CICD
 Connect this client to the Websocket Service running on cicd
 On browser, go to https://localhost/login. Then click buttons Init and Start
 
+===========================================================
+10 Feb 2024
+-----------
+
+
+Websocket via Browser Console .. works
+
+
+const ws = new WebSocket('wss://cicd.apps.ciena.com/WebSocketsService/chats?NetworkDesignId=bd3fee18-0d35-4bcf-848a-a466a9cd3b56&clientId=bf2e2a28-7e23-46ea-818e-fd4d6d44ef14');
+
+const ws = new WebSocket('wss://apps.ciena.com/WebSocketsService/chats?NetworkDesignId=56124120-fb39-4450-baf2-5c805cb2b436&clientId=f0d9be81-9805-4ef0-95d4-928146f06cd2');
+ws.onopen = function() { console.log('Test WS Connection opened'); };
+ws.onmessage = function(event) { console.log('Message: ', event.data); };
+
+ws.send('{"protocol":"json","version":1}');
+ws.send('{"type":6}');
+
+function myPing() {  console.log('Pinging .. '); ws.send('{"type":6}'); }
+var intervalId = setInterval(myPing, 5000);
+
+clearInterval(intervalId);
