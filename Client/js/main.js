@@ -4,10 +4,15 @@ var connection;
 async function initConnection() {
 	console.log("inside initConnection");
 	let networkId = '0ba4ba8b-83b7-42b4-bff4-72ca35dd4a1c';
-	let newClientIdAsGuid = '0417fd5c-7da5-40b0-b0b0-1384aefd0266';
+	let newClientIdAsGuid = '0417fd5c-7da5-40b0-b0b0-1384aefd0270';
 	connection = new signalR.HubConnectionBuilder()
-		.withUrl("/WebSocketsService/chats?networkDesignId={WebSocketsService/chats?networkDesignId="+networkId+"&clientId="+newClientIdAsGuid+"&negotiateVersion=1")
+		.withUrl("/WebSocketsService/chats?networkDesignId="+networkId+"&clientId="+newClientIdAsGuid,
+		{
+			transport: signalR.HttpTransportType.WebSockets,
+			skipNegotiation: true
+		})
 		.configureLogging(signalR.LogLevel.Information)
+		
 		.build();
 		
 	
